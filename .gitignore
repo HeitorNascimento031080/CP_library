@@ -1,9 +1,8 @@
 # Ignora arquivos executaveis
 *.exe
-
+*.json
 # Ignora seus arquivos de teste locais
 input.txt
 output.txt
-
 # Se tiver alguma pasta de build, pode ignorar assim:
 build/
