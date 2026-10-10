@@ -18,9 +18,8 @@ const int MAXN = 2e5+3;
 
 
 void solve(){
-    
+    return;
 }
-
 
 signed main(){
     ios_base::sync_with_stdio(0); cin.tie(0);
@@ -28,10 +27,10 @@ signed main(){
         freopen("input.txt", "r", stdin);
         freopen("output.txt", "w", stdout);
     #endif
-    int t; cin>>t;
-    while(t--){
-        solve();
-    }
-
+    // int t;cin>>t;
+    // // while(t--){
+    // //     solve();
+    // // }
+    solve();
     return 0;
 }
