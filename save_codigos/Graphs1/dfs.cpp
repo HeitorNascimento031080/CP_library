@@ -61,7 +61,7 @@ bool ciclo2(int u){ //ciclo direcionado
     for(int v : adj[u]){
         if(!vis[v]){
             pai[v] = u;
-            if (ciclo2(v, u)) return true;
+            if (ciclo2(v)) return true;
         }
         else if(vis[v]==1){
             idx2 = u;

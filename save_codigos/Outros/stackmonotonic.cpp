@@ -16,76 +16,46 @@ const int INF_mn = 0xc0c0c0c0c0c0c0c0;
 const int INF_mx = 0x3f3f3f3f3f3f3f3f;
 const int MAXN = 2e5+3;
 
-
-void solve(){
-    int n;cin>>n;
+void solve(){  
+    int n; cin>>n;
+    vector<int> v(n);
+    for(int& i:v) cin>>i;
     vector<int> l(n, -1);
     vector<int> r(n, n);
-    vector<int> v(n);
-    stack<int> a1, id1, a2, id2;
-
-    for(int& i:v) cin>>i;
+    stack<int> a;
+    //menor à esquerda
     for(int i=0; i<n; i++){
-        if(a1.empty()){
-            a1.push(v[i]);
-            id1.push(i);
+        while(!a.empty()&&v[i]>=a.top()){
+            a.pop();
         }
-        else{
-            if(v[i]<a1.top()){
-                while(!a1.empty()){
-                    if(v[i]>a1.top()) break;
-                    int top = id1.top();
-                    r[top] = i;
-                    id1.pop();
-                    a1.pop();
-                }
-                a1.push(v[i]);
-                id1.push(i);
-            }
-            else{
-                a1.push(v[i]);
-                id1.push(i);  
-            }
+        if(!a1.empty()){
+            l[i] = a.top();
         }
+        a.push(i);
     }
+    //limpar a pilha
+    while(!a.empty()) a.pop();
+    // menor à direita
     for(int i=n-1; i>=0; i--){
-        if(a2.empty()){
-            a2.push(v[i]);
-            id2.push(i);
+        while(!a.empty()&&v[i]>=a.top()){
+            a.pop();
         }
-        else{
-            if(v[i]<a2.top()){
-                while(!a2.empty()){
-                    if(v[i]>a2.top()) break;
-                    int top = id2.top();
-                    l[top] = i;
-                    id2.pop();
-                    a2.pop();
-                }
-                a2.push(v[i]);
-                id2.push(i);
-            }
-            else{
-                a2.push(v[i]);
-                id2.push(i);  
-            }
+        if(!a1.empty()){
+            r[i] = a.top();
         }
+        a.push(i);
     }
     int ans = 0;
-    cout<<"\n";
     for(int i=0; i<n; i++){
-        ans+= v[i]*(r[i]-i)*(i-l[i]);
+        ans= max(ans,v[i]*(r[i]-l[i]+1));
     }
     cout<<ans<<"\n";
     return;
-
 }
 
 
 signed main(){
     ios_base::sync_with_stdio(0); cin.tie(0);
-
-
     solve();
     return 0;
 }

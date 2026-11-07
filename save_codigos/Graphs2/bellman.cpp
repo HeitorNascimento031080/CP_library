@@ -20,9 +20,9 @@ int dist[MAXN];
 int pai[MAXN];
 vector<int> ciclo;
 void bellman1(int u, vt& adj){
-    memset(dist, bit, sizeof(dist));
+    memset(dist, nbit, sizeof(dist));
     memset(pai, -1, sizeof(pai));
-    dist[0] = 0;
+    dist[0] = 0.0;
     for(int i=0; i<n-1; i++){
         for(auto [u,v,w]: adj){
             if(dist[v]>dist[u]+w){
